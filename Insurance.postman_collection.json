@@ -1,0 +1,318 @@
+{
+	"info": {
+		"_postman_id": "8c9598db-57ad-406a-ba14-cd2e5dd6b54a",
+		"name": "Insurance",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22289003"
+	},
+	"item": [
+		{
+			"name": "Authentication/Login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{userName}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "remote-user",
+						"value": "papfhir",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://imis.hib.gov.np/api/api_fhir",
+					"protocol": "http",
+					"host": [
+						"imis",
+						"hib",
+						"gov",
+						"np"
+					],
+					"path": [
+						"api",
+						"api_fhir"
+					],
+					"query": [
+						{
+							"key": "remote-user",
+							"value": "papfhir",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EligibiliityRequest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "remote-user",
+						"value": "papfhir",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n \"resourceType\": \"EligibilityRequest\",\r\n \"patient\": {\r\n \"reference\": \"Patient/744680381\"\r\n }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/EligibilityRequest/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"EligibilityRequest",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllClaim",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{userName}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "remote-user",
+						"value": "papfhir",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/Claim/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Claim",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPatientByUUID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "remote-user",
+						"value": "papfhir",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/Patient/2BA36FBC-1969-4B0D-BE28-45861046F38F",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Patient",
+						"2BA36FBC-1969-4B0D-BE28-45861046F38F"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPatientById",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "remote-user",
+						"value": "papfhir",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/Patient?identifier=741-469-201",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Patient"
+					],
+					"query": [
+						{
+							"key": "identifier",
+							"value": "741-469-201"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetClaimByUUID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "remote-user",
+						"value": "papfhir",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/Claim/8A700202-FA2B-4FCF-906F-56AE78ADECD5",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Claim",
+						"8A700202-FA2B-4FCF-906F-56AE78ADECD5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetClaimById",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "remote-user",
+						"value": "papfhir",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/ClaimResponse?identifier=<ClaimId>",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ClaimResponse"
+					],
+					"query": [
+						{
+							"key": "identifier",
+							"value": "<ClaimId>"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit_Claim",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "remote-user",
+						"value": "papfhir",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"resourceType\": \"Claim\",\r\n    \"billablePeriod\": {\r\n        \"end\": \"2023-09-11\",\r\n        \"start\": \"2023-09-05\"\r\n    },\r\n    \"created\": \"2023-09-05\",\r\n    \"diagnosis\": [\r\n        {  \r\n            \"diagnosisCodeableConcept\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"7A0Z\"\r\n                    }\r\n                ]\r\n            },\r\n            \"sequence\": 1,\r\n            \"type\": [\r\n                {\r\n                    \"text\": \"icd_0\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"enterer\": {\r\n        \"reference\": \"Practitioner/AD39CC86-E347-4076-A1A1-487EECB8064C\"\r\n    },\r\n    \"facility\": {\r\n        \"reference\": \"Location/BE4B5E80-50BC-49D2-9AB3-0D30D1128C28\"\r\n    },\r\n    \"id\": \"1344F764-30B0-463F-A6BC-6E1A18232CF1\",\r\n    \"identifier\": [\r\n        {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"ACSN\",\r\n                        \"system\": \"https://hl7.org/fhir/valueset-identifier-type.html\"\r\n                    }\r\n                ]\r\n            },\r\n            \"use\": \"usual\",\r\n            \"value\": \"1344F764-30B0-463F-A6BC-6E1A18232CF1\"\r\n        },\r\n        {\r\n            \"type\": {\r\n                \"coding\": [\r\n                    {\r\n                        \"code\": \"MR\",\r\n                        \"system\": \"https://hl7.org/fhir/valueset-identifier-type.html\"\r\n                    }\r\n                ]\r\n            },\r\n            \"use\": \"usual\",\r\n            \"value\": \"744680381\"\r\n        }\r\n    ],\r\n    \"item\": [\r\n        {\r\n            \"category\": {\r\n                \"text\": \"cetamol\"\r\n            },\r\n            \"quantity\": {\r\n                \"value\": 1\r\n            },\r\n            \"sequence\": 1,\r\n            \"service\": {\r\n                \"text\": \"OPD 1\"\r\n            },\r\n            \"unitPrice\": {\r\n                \"value\": 1\r\n            }\r\n        }\r\n    ],\r\n    \"total\": {\r\n        \"value\": 1\r\n    },\r\n    \"patient\": {\r\n        \"reference\": \"Patient/1344F764-30B0-463F-A6BC-6E1A18232CF1\"\r\n    },\r\n    \"type\": {\r\n        \"text\": \"0\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/Claim/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Claim",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{userName}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
